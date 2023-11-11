@@ -22,6 +22,7 @@ def takecommand():
 
     with sr.Microphone() as source:
         print('listening...')
+        eel.DisplayMessage('listening...')
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
         try:
@@ -35,8 +36,12 @@ def takecommand():
 
     try:
         print('Recognizing...')
+        eel.DisplayMessage('Recognizing...')
         query = r.recognize_google(audio, language='en-in')
         print(f"User said: {query}\n")
+        eel.DisplayMessage(query)
+        os.system(f"say {query}")
+        eel.ShowHood()
     except sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")
         return ""

@@ -3,7 +3,7 @@ import platform
 import eel
 import webbrowser
 from engine.features import *
-from engine.command import takecommand
+from engine.command import *
 
 eel.init("web")
 
